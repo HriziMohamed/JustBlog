@@ -12,12 +12,17 @@ namespace JustBlog
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
             routes.MapRoute(
-        "Default",
-        "{controller}/{action}/{id}",
-        new { controller = "Blog", action = "Posts", id = UrlParameter.Optional }
-    );
+                            "Action",
+                            "{action}",
+                            new { controller = "Blog", action = "Posts" }
+                            );
+            routes.MapRoute(
+                            "Default",
+                            "{controller}/{action}/{id}",
+                            new { controller = "Blog", action = "Posts", id = UrlParameter.Optional }
+                        );
+           
         }
     }
 }
