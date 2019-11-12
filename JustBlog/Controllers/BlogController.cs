@@ -2,6 +2,9 @@
 using System.Web.Mvc;
 using JustBlog.Models;
 using JustBlog.Core.Objects;
+using System.Web;
+using System;
+
 namespace JustBlog.Controllers
 {
     public class BlogController : Controller
@@ -36,6 +39,19 @@ namespace JustBlog.Controllers
 
             ViewBag.Title = "Latest Posts";
 
+            return View("List", viewModel);
+        }
+
+        public ViewResult Category(string category, int p = 1)
+        {
+           
+            var viewModel = new ListViewModel(_blogRepository, category, p);
+
+            if (viewModel.Category == null)
+                throw new HttpException(404, "Category not found");
+
+            ViewBag.Title = String.Format(@"Latest posts on category ""{0}""",
+                                viewModel.Category.Name);
             return View("List", viewModel);
         }
     }
