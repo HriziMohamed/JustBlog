@@ -135,11 +135,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionLinkExtensions.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -792,6 +794,7 @@
     <Content Include="Content\themes\simple\jqueryuicustom\development-bundle\ui.tabs.jquery.json" />
     <Content Include="Content\themes\simple\jqueryuicustom\development-bundle\ui.tooltip.jquery.json" />
     <Content Include="Content\themes\simple\jqueryuicustom\development-bundle\ui.widget.jquery.json" />
+    <Content Include="App_Code\Helpers.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -817,10 +820,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_PostTemplate.cshtml" />
+    <Content Include="Views\Blog\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
