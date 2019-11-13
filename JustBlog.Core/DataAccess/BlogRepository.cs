@@ -149,5 +149,11 @@ namespace JustBlog.Core
         }
 
 
+        public IList<Category> Categories()
+        {
+            return _session.Query<Category>().OrderBy(p => p.Name).ToList();
+        }
+
+
     }
 }

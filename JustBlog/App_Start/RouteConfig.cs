@@ -38,12 +38,20 @@ namespace JustBlog
                             "Post",
                             "Archive/{year}/{month}/{title}",
                             new { controller = "Blog", action = "Post" }
-                             //"Post",
-                             //   "Archive/Post/{year}-{month}-{day}",
-                             //   new { controller = "Blog", action = "Post" },
-                             //   new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" }
+                        //"Post",
+                        //   "Archive/Post/{year}-{month}-{day}",
+                        //   new { controller = "Blog", action = "Post" },
+                        //   new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" }
 
                         );
+
+
+            //routes.MapRoute(
+            //                "Post",
+            //                "Archive/Post/{year}-{month}-{day}",
+            //                new { controller = "Blog", action = "Post" },
+            //                new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" }
+            //            );
 
         }
     }
