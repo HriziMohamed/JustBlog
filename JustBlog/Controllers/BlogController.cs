@@ -45,7 +45,7 @@ namespace JustBlog.Controllers
         public ViewResult Category(string category, int p = 1)
         {
            
-            var viewModel = new ListViewModel(_blogRepository, category, p);
+            var viewModel = new ListViewModel(_blogRepository, category, "Category", p);
 
             if (viewModel.Category == null)
                 throw new HttpException(404, "Category not found");
@@ -54,5 +54,23 @@ namespace JustBlog.Controllers
                                 viewModel.Category.Name);
             return View("List", viewModel);
         }
+
+
+
+
+
+        public ViewResult Tag(string tag, int p = 1)
+        {
+            var viewModel = new ListViewModel(_blogRepository, tag, "Tag", p);
+
+            if (viewModel.Tag == null)
+                throw new HttpException(404, "Tag not found");
+
+            ViewBag.Title = String.Format(@"Latest posts tagged on ""{0}""",
+                viewModel.Tag.Name);
+            return View("List", viewModel);
+        }
+
+
     }
 }

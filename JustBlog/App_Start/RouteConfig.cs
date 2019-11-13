@@ -28,6 +28,12 @@ namespace JustBlog
                             new { controller = "Blog", action = "Category" }
                         );
 
+            routes.MapRoute(
+                            "Tag",
+                            "Tag/{tag}",
+                            new { controller = "Blog", action = "Tag" }
+                        );
+
         }
     }
 }
