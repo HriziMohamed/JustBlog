@@ -12,6 +12,8 @@ namespace JustBlog.Models
 
         public Tag Tag { get; private set; }
 
+        public string Search { get; private set; }
+
 
         public ListViewModel(IBlogRepository _blogRepository, int p)
         {
@@ -25,15 +27,20 @@ namespace JustBlog.Models
         {
             switch (type)
             {
+                case "Category":
+                    Posts = blogRepository.PostsForCategory(text, p - 1, 10);
+                    TotalPosts = blogRepository.TotalPostsForCategory(text);
+                    Category = blogRepository.Category(text);
+                    break;
                 case "Tag":
                     Posts = blogRepository.PostsForTag(text, p - 1, 10);
                     TotalPosts = blogRepository.TotalPostsForTag(text);
                     Tag = blogRepository.Tag(text);
                     break;
                 default:
-                    Posts = blogRepository.PostsForCategory(text, p - 1, 10);
-                    TotalPosts = blogRepository.TotalPostsForCategory(text);
-                    Category = blogRepository.Category(text);
+                    Posts = blogRepository.PostsForSearch(text, p - 1, 10);
+                    TotalPosts = blogRepository.TotalPostsForSearch(text);
+                    Search = text;
                     break;
             }
         }
