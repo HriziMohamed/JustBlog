@@ -23,5 +23,8 @@ namespace JustBlog.Core
 
 
         IList<Category> Categories();
+
+
+        IList<Tag> Tags();
     }
 }
