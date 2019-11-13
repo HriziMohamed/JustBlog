@@ -136,5 +136,18 @@ namespace JustBlog.Core
         }
 
 
+
+        public Post Post(int year, int month, string titleSlug)
+        {
+            var query = _session.Query<Post>()
+                                .Where(p => p.PostedOn.Year == year && p.PostedOn.Month == month && p.UrlSlug.Equals(titleSlug))
+                                .Fetch(p => p.Category);
+
+            query.FetchMany(p => p.Tags).ToFuture();
+
+            return query.ToFuture().Single();
+        }
+
+
     }
 }
