@@ -53,6 +53,18 @@ namespace JustBlog
             //                new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" }
             //            );
 
+            routes.MapRoute(
+                            "Login",
+                            "Login",
+                            new { controller = "Admin", action = "Login" }
+                        );
+            routes.MapRoute(
+                            "Logout",
+                            "Logout",
+                            new { controller = "Admin", action = "Logout" }
+                        );
+
+
         }
     }
 }
