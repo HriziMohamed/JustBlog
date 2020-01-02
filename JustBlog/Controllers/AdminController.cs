@@ -1,4 +1,5 @@
 ﻿using JustBlog.Models;
+using JustBlog.Providers;
 using System;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -8,48 +9,65 @@ namespace JustBlog.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        
+        private readonly IAuthProvider _authProvider;
+
+        public AdminController(IAuthProvider authProvider)
+        {
+            _authProvider = authProvider;
+
+
+        }
+
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
-
-                return RedirectToAction("Manage");
-            }
+            if (_authProvider.IsLoggedIn)
+                return RedirectToUrl(returnUrl);
 
             ViewBag.ReturnUrl = returnUrl;
 
             return View();
         }
 
-        //[RequireHttps]
         [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _authProvider.Login(model.UserName, model.Password))
             {
-                if (FormsAuthentication.Authenticate(model.UserName, model.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false);
-
-                    if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return Redirect(returnUrl);
-
-                    return RedirectToAction("Manage");
-                }
-
-                ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                return RedirectToUrl(returnUrl);
             }
+
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View(model);
+        }
+
+        public ActionResult Manage()
+        {
             return View();
         }
 
         public ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            _authProvider.Logout();
 
             return RedirectToAction("Login", "Admin");
         }
+
+        private ActionResult RedirectToUrl(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Manage");
+            }
+        }
+
+
+       
     }
 }
