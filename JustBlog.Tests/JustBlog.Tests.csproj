@@ -110,6 +110,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JustBlog.Core\JustBlog.Core.csproj">
+      <Project>{cf6f7196-b7f1-4008-8248-94dd8c516910}</Project>
+      <Name>JustBlog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JustBlog\JustBlog.csproj">
       <Project>{9952bdf2-ec05-4b7c-a915-3da2274aec79}</Project>
       <Name>JustBlog</Name>

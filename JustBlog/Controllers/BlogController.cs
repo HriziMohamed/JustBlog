@@ -1,9 +1,9 @@
 ﻿using JustBlog.Core;
 using System.Web.Mvc;
 using JustBlog.Models;
-using JustBlog.Core.Objects;
 using System.Web;
 using System;
+
 
 namespace JustBlog.Controllers
 {
@@ -102,6 +102,11 @@ namespace JustBlog.Controllers
             var widgetViewModel = new WidgetViewModel(_blogRepository);
             return PartialView("_Sidebars", widgetViewModel);
         }
+
+
+       
+
+       
 
     }
 }

@@ -64,6 +64,18 @@ namespace JustBlog
                             new { controller = "Admin", action = "Logout" }
                         );
 
+            routes.MapRoute(
+                            "Manage",
+                            "Manage",
+                            new { controller = "Admin", action = "Manage" }
+                        );
+
+            routes.MapRoute(
+                            "AdminAction",
+                            "Admin/{action}",
+                            new { controller = "Admin", action = "Login" }
+                        );
+
 
         }
     }

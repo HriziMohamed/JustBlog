@@ -5,16 +5,16 @@ namespace JustBlog.Core
     public interface IBlogRepository
     {
         IList<Post> Posts(int pageNo, int pageSize);
-        int TotalPosts();
+        int TotalPosts(bool checkIsPublished = true);
 
         IList<Post> PostsForCategory(string categorySlug, int pageNo, int pageSize);
         int TotalPostsForCategory(string categorySlug);
         Category Category(string categorySlug);
-
+       
         IList<Post> PostsForTag(string tagSlug, int pageNo, int pageSize);
         int TotalPostsForTag(string tagSlug);
         Tag Tag(string tagSlug);
-
+        
         IList<Post> PostsForSearch(string search, int pageNo, int pageSize);
         int TotalPostsForSearch(string search);
 
@@ -26,5 +26,19 @@ namespace JustBlog.Core
 
 
         IList<Tag> Tags();
+
+        IList<Post> Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending);
+
+        int AddPost(Post post);
+
+        Category Category(int id);
+
+        Tag Tag(int id);
+
+        Post Post(int id);
+
+        void EditPost(Post post);
+
+        void DeletePost(int id);
     }
 }
