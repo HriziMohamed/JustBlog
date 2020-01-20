@@ -212,19 +212,19 @@ namespace JustBlog.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ContentResult DeletePost(int id)
-        //{
-        //    _blogRepository.DeletePost(id);
+        [HttpPost]
+        public ContentResult DeletePost(int id)
+        {
+            _blogRepository.DeletePost(id);
 
-        //    var json = JsonConvert.SerializeObject(new
-        //    {
-        //        success = true,
-        //        message = "Post deleted successfully."
-        //    });
+            var json = JsonConvert.SerializeObject(new
+            {
+                success = true,
+                message = "Post deleted successfully."
+            });
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         #endregion
 
@@ -252,85 +252,85 @@ namespace JustBlog.Controllers
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ContentResult AddCategory([Bind(Exclude = "Id")]Category category)
-        //{
-        //    string json;
+        [HttpPost]
+        public ContentResult AddCategory([Bind(Exclude = "Id")]Category category)
+        {
+            string json;
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var id = _blogRepository.AddCategory(category);
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = id,
-        //            success = true,
-        //            message = "Category added successfully."
-        //        });
-        //    }
-        //    else
-        //    {
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = 0,
-        //            success = false,
-        //            message = "Failed to add the category."
-        //        });
-        //    }
+            if (ModelState.IsValid)
+            {
+                var id = _blogRepository.AddCategory(category);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = id,
+                    success = true,
+                    message = "Category added successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to add the category."
+                });
+            }
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         /// <summary>
         /// Edit an existing category.
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ContentResult EditCategory(Category category)
-        //{
-        //    string json;
+        [HttpPost]
+        public ContentResult EditCategory(Category category)
+        {
+            string json;
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        _blogRepository.EditCategory(category);
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = category.Id,
-        //            success = true,
-        //            message = "Changes saved successfully."
-        //        });
-        //    }
-        //    else
-        //    {
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = 0,
-        //            success = false,
-        //            message = "Failed to save the changes."
-        //        });
-        //    }
+            if (ModelState.IsValid)
+            {
+                _blogRepository.EditCategory(category);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = category.Id,
+                    success = true,
+                    message = "Changes saved successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to save the changes."
+                });
+            }
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         /// <summary>
         /// Delete an existing category.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ContentResult DeleteCategory(int id)
-        //{
-        //    _blogRepository.DeleteCategory(id);
+        [HttpPost]
+        public ContentResult DeleteCategory(int id)
+        {
+            _blogRepository.DeleteCategory(id);
 
-        //    var json = JsonConvert.SerializeObject(new
-        //    {
-        //        success = true,
-        //        message = "Category deleted successfully."
-        //    });
+            var json = JsonConvert.SerializeObject(new
+            {
+                success = true,
+                message = "Category deleted successfully."
+            });
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         /// <summary>
         /// Return html required to create category dropdown in jQGrid popup.
@@ -378,33 +378,33 @@ namespace JustBlog.Controllers
         /// </summary>
         /// <param name="tag"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ContentResult AddTag([Bind(Exclude = "Id")]Tag tag)
-        //{
-        //    string json;
+        [HttpPost]
+        public ContentResult AddTag([Bind(Exclude = "Id")]Tag tag)
+        {
+            string json;
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var id = _blogRepository.AddTag(tag);
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = id,
-        //            success = true,
-        //            message = "Tag added successfully."
-        //        });
-        //    }
-        //    else
-        //    {
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = 0,
-        //            success = false,
-        //            message = "Failed to add the tag."
-        //        });
-        //    }
+            if (ModelState.IsValid)
+            {
+                var id = _blogRepository.AddTag(tag);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = id,
+                    success = true,
+                    message = "Tag added successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to add the tag."
+                });
+            }
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         /// <summary>
         /// Edit an existing tag.
@@ -412,51 +412,51 @@ namespace JustBlog.Controllers
         /// <param name="tag"></param>
         /// <returns></returns>
         //[HttpPost]
-        //public ContentResult EditTag(Tag tag)
-        //{
-        //    string json;
+        public ContentResult EditTag(Tag tag)
+        {
+            string json;
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        _blogRepository.EditTag(tag);
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = tag.Id,
-        //            success = true,
-        //            message = "Changes saved successfully."
-        //        });
-        //    }
-        //    else
-        //    {
-        //        json = JsonConvert.SerializeObject(new
-        //        {
-        //            id = 0,
-        //            success = false,
-        //            message = "Failed to save the changes."
-        //        });
-        //    }
+            if (ModelState.IsValid)
+            {
+                _blogRepository.EditTag(tag);
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = tag.Id,
+                    success = true,
+                    message = "Changes saved successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to save the changes."
+                });
+            }
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         /// <summary>
         /// Delete an existing tag.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ContentResult DeleteTag(int id)
-        //{
-        //    _blogRepository.DeleteTag(id);
+        [HttpPost]
+        public ContentResult DeleteTag(int id)
+        {
+            _blogRepository.DeleteTag(id);
 
-        //    var json = JsonConvert.SerializeObject(new
-        //    {
-        //        success = true,
-        //        message = "Tag deleted successfully."
-        //    });
+            var json = JsonConvert.SerializeObject(new
+            {
+                success = true,
+                message = "Tag deleted successfully."
+            });
 
-        //    return Content(json, "application/json");
-        //}
+            return Content(json, "application/json");
+        }
 
         /// <summary>
         /// Return html required to create tag dropdown in jQGrid popup.
